@@ -1,0 +1,1215 @@
+:root {
+    --bg-color: rgba(90, 90, 90, 1);
+    --hover-color: #2C8CEB;
+}
+
+html{
+    position:absolute;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+    background: black;
+    -moz-user-select: none; 
+    -webkit-user-select: none; 
+    -ms-user-select:none; 
+    user-select:none;
+    -o-user-select:none;
+    font-family: "Mplus 1p";
+    overflow:hidden;
+}
+body{
+    position:absolute;
+    margin:0px;
+    padding:0px;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+}
+select{
+    background: rgba(20, 20, 20, 0.5);
+    color: rgb(204, 204, 204);
+    border:0px;
+    border: rgb(140, 140, 140) solid 1px;
+    text-align:center;
+}
+#load_bg{
+    position:absolute;
+    top:0px;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    background:black;
+    z-index:0;
+}
+#load_gif{
+    position:absolute;
+    top:calc(50% - 50vmin);
+    left:calc(50% - 50vmin);
+    width: calc(100vmin);
+    height: calc(100vmin);
+}
+#gif_anim{
+    position:absolute;
+    left:30px;
+    width:calc(100% - 60px);
+    top:30%;
+}
+#load_console{
+    position:absolute;
+    height:60px;
+    width:calc(100% - 10px);
+    top:calc(100% - 70px);
+    padding:5px;
+    text-align:center;
+    font-family: 'Orbitron', sans-serif;
+    text-font:1rem;
+    color: #009cd1;
+    overflow:hidden;
+}
+#reset{
+    position:absolute;
+    background:#FF5E19;
+    width:30px;
+    height:30px;
+    border: rgb(140, 140, 140) solid 1px;
+    box-sizing:border-box;
+    color: white;
+    border-radius:15px;
+    left:calc(100% - 40px);
+    top: 10px;
+    overflow:hidden;
+    text-align:center;
+    font-size:1.5rem;
+    font-family: "Nico Moji";
+    cursor:pointer;
+}
+
+#reset_modal_bg{
+    position:absolute;
+    background:black;
+    width:100%;
+    height:100%;
+    overflow:hidden;
+    z-index:100;
+    display:none;
+}
+#modal{
+    position:absolute;
+    background:white;
+    width:calc(100% - 50px);
+    height:calc(100% - 80px);
+    top:55px;
+    left:25px;
+    box-sizing:border-box;
+    border-radius:10px;
+    border:solid 5px #FF5E19;
+    overflow-x:scroll;
+}
+#modal_title {
+    position:relative;
+    width:80%;
+    height:50px;
+    font-size:2.6rem;
+    text-align:center;
+    left:10%;
+    top:5px;
+    box-sizing:border-box;
+    border-bottom:solid 5px #FF5E19;
+    font-family: "Nico Moji";
+}
+#modal_text{
+    position:relative;
+    width:96%;
+    left:2%;
+    overflow:hidden;
+    top:10px;
+}
+#reset_button{
+    position:relative;
+    background:#FF5E19;
+    width:180px;
+    height:40px;
+    left:calc(50% - 90px);
+    color:white;
+    font-size:1.7rem;
+    text-align:center;
+    border-radius:5px;
+    top:20px;
+    cursor:pointer;
+}
+#reset_button:hover{
+    background:var(--hover-color);
+}
+#reset_back{
+    position:absolute;
+    background:#FF5E19;
+    width:30px;
+    height:30px;
+    border: rgb(140, 140, 140) solid 1px;
+    box-sizing:border-box;
+    color: white;
+    border-radius:15px;
+    left:calc(100% - 40px);
+    top: 10px;
+    overflow:hidden;
+    cursor:pointer;
+    text-align:center;
+    font-size:1.1rem;
+}
+
+#mode_button{
+    position:absolute;
+    background:orange;
+    width:150px;
+    height:50px;
+    top:calc(100% - 55px);
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.3rem;
+    font-family: "Nico Moji";
+    border-radius:0 5px 5px 0;
+    z-index:10;
+    cursor:pointer;
+    display:none;
+}
+
+
+/*マイク*/
+#mic{
+    position:absolute;
+    top:calc(100% - 65px);
+    left:calc(100% - 65px);
+    border-radius: 40px;
+    width:60px;
+    height:60px;
+    background:rgba(50, 50, 50, 0.5);
+    z-index:10;
+    cursor:pointer;
+    display:none;
+    box-sizing:border-box;
+    border: rgb(140, 140, 140) solid 1px;
+}
+
+#mic.record{
+    background:rgb(255, 50, 50);
+}
+
+#mic:hover{
+    background:rgba(255, 50, 50, 0.5);
+}
+
+#img_mic{
+    position:absolute;
+    width:60%;
+    height:60%;
+    top:20%;
+    left:20%;
+}
+
+/*吹き出し*/
+#command_box{
+    height:25px;
+    overflow:hidden;
+}
+.arrow_box {
+    position: absolute;
+    top: calc(100% - 108px);
+    background: #ffffff;
+    border: 1px solid #000000;
+    width:250px;
+    border-radius:7px;
+    height:25px;
+    text-align:center;
+    font-size:1rem;
+    left:calc(100% - 260px);
+    z-index:10;
+    display:none;
+    cursor:default;
+}
+.arrow_box:after, .arrow_box:before {
+    top: 100%;
+    left: 224px;
+    border: solid transparent;
+    content: " ";
+    height: 0;
+    width: 0;
+    position: absolute;
+    pointer-events: none;
+}
+
+.arrow_box:after {
+    border-color: rgba(255, 255, 255, 0);
+    border-top-color: #ffffff;
+    border-width: 10px;
+    margin-left: -10px;
+}
+.arrow_box:before {
+    border-color: rgba(0, 0, 0, 0);
+    border-top-color: #000000;
+    border-width: 11px;
+    margin-left: -11px;
+}
+
+
+
+/*メニュー*/
+
+#menu_button{
+    position:absolute;
+    background:rgba(50, 50, 50, 0.5);
+    width:50px;
+    height:50px;
+    border: rgb(140, 140, 140) solid 1px;
+    box-sizing:border-box;
+    color: rgb(204, 204, 204);
+    border-radius:5px;
+    left:calc(100% - 55px);
+    top: 5px;
+    overflow:hidden;
+    cursor:pointer;
+    display:none;
+    z-index:10;
+}
+#menu_button:hover{
+    background:var(--hover-color);
+}
+.button_elm{
+    position:relative;
+    width:70%;
+    height:7px;
+    background:rgba(200, 200, 200, 0.9);
+    border: rgb(140, 140, 140) solid 1px;
+    box-sizing:border-box;
+    left:15%;
+    margin-top:7px;
+}
+
+#menu_window{
+    position:absolute;
+    background:rgba(10, 10, 10, 0.5);
+    width:100%;
+    height:100%;
+    display:none;
+    z-index:10;
+}
+
+/* タブ */
+#tabs{
+    position: absolute;
+    width:100%;
+    height:60px;
+    box-sizing:border-box;
+    border-bottom:2px solid rgb(140, 140, 140);
+}
+.tab{
+    background:rgb(20, 20, 20);
+}
+#close_menu{
+    position:absolute;
+    background:rgba(50, 50, 50, 0.5);
+    width:50px;
+    height:50px;
+    border: rgb(140, 140, 140) solid 1px;
+    box-sizing:border-box;
+    color: rgb(204, 204, 204);
+    border-radius:5px;
+    left:calc(100% - 55px);
+    top: 5px;
+    text-align:center;
+    font-size:32px;
+    overflow:hidden;
+    cursor:pointer;
+    font-weight:bold;
+}
+#close_menu:hover{
+    background:var(--hover-color);
+}
+#in_tabs{
+    position:absolute;
+    height:100%;
+    width:calc(100% - 60px);
+    font-family: "Nico Moji";
+}
+.center_font{
+    width:100%;
+    text-align:center;
+    vertical-align:middle;
+}
+#music_tab{
+    position:absolute;
+    height:100%;
+    width:calc(100% / 3);
+    border-right:2px solid rgb(140, 140, 140);
+    box-sizing:border-box;
+    text-align:center;
+    cursor:pointer;
+    color: rgb(204, 204, 204);
+    font-size:1.7rem;
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+}
+#music_tab:hover{
+    background:var(--hover-color);
+    color:white;
+}
+#control_tab{
+    position:absolute;
+    height:100%;
+    left:calc(100% / 3);
+    width:calc(100% / 3);
+    border-right:2px solid rgb(140, 140, 140);
+    box-sizing:border-box;
+    text-align:center;
+    cursor:pointer;
+    color: rgb(204, 204, 204);
+    font-size:1.7rem;
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+}
+#control_tab:hover{
+    background:var(--hover-color);
+    color:white;
+}
+#model_tab{
+    position:absolute;
+    height:100%;
+    left:calc(100% / 3 * 2);
+    width:calc(100% / 3);
+    text-align:center;
+    cursor:pointer;
+    color: rgb(204, 204, 204);
+    font-size:1.7rem;
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+}
+#model_tab:hover{
+    background:var(--hover-color);
+    color:white;
+}
+
+/* 表示 */
+#panels{
+    position: absolute;
+    width:100%;
+    height:calc(100% - 60px);
+    top:60px;
+    overflow-y:scroll;
+}
+#panels::-webkit-scrollbar {
+    display: none;
+}
+
+/*パネル*/
+#music_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+#control_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:none;
+}
+
+/*モデル選択画面*/
+#model_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    display:none;
+}
+.model{
+    position:relative;
+    width:100%;
+    height:60px;
+    box-sizing:border-box;
+    border-bottom:1px solid rgb(140, 140, 140);
+    overflow:hidden;
+    color: rgb(204, 204, 204);
+    cursor:pointer;
+}
+.model:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.model_info{
+    position:absolute;
+    width:calc(100% - 45px);
+    padding-top:6px;
+    height:calc(100% - 6px);
+    left:3px;
+    top:0px;
+    padding-left:10px;
+    font-size:1rem;
+}
+.model_option{
+    position:absolute;
+    height:60px;
+    width:120px;
+    left:calc(100% - 30px);
+    box-sizing:border-box;
+    border-left:1px solid rgb(140, 140, 140);
+    border-bottom:1px solid rgb(140, 140, 140);
+    cursor:pointer;
+}
+.model_option_button{
+    background:rgba(50, 50, 50, 0.5);
+    position:absolute;
+    height:100%;
+    width:30px;
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.5rem;
+}
+.model_option_button:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.delete_model{
+    position:absolute;
+    height:100%;
+    width:90px;
+    left:30px;
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    background:red;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.5rem;
+}
+
+/*モデル入力画面*/
+#model_input_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(50, 50, 50, 0.9);
+    display:none;
+}
+#model_title{
+    position:relative;
+    width:300px;
+    margin-top:5px;
+    height:30px;
+    left:calc(50% - 150px);
+    text-align:center;
+    color: rgb(204, 204, 204);
+    box-sizing:border-box;
+    border-bottom:3px solid rgb(140, 140, 140);
+    font-size:1.5rem;
+    font-family: "Nico Moji";
+}
+#model_desc{
+    margin-top:5px;
+    position:relative;
+    width:calc(100% - 20px);
+    color: rgb(204, 204, 204);
+    text-align:center;
+    font-size:0.7rem;
+    padding:10px;
+}
+#now_load_pmd{
+    width:180px;
+    margin-top:5px;
+    height:40px;
+    position:relative;
+    left:calc(50% - 90px);
+    background:rgb(100, 100, 100);
+    text-align:center;
+    color: rgb(204, 204, 204);
+    padding:5px;
+    padding-top:15px;
+    font-size:2rem;
+    border-radius:5px;
+    font-family: "Nico Moji";
+    cursor:pointer;
+    display:none;
+}
+#model_pmd_input{
+    width:180px;
+    margin-top:5px;
+    height:50px;
+    position:relative;
+    left:calc(50% - 90px);
+    background:#FF5E19;
+    text-align:center;
+    color: rgb(204, 204, 204);
+    padding:5px;
+    font-size:3rem;
+    border-radius:5px;
+    font-family: "Nico Moji";
+    cursor:pointer;
+}
+#model_pmd_input:hover{
+    background:var(--hover-color);
+    color:white;
+}
+
+
+
+
+
+/*追加ボタン*/
+.add_button{
+    position:absolute;
+    width:100%;
+    height:60px;
+    top:calc(100% - 60px);
+    box-sizing:border-box;
+    border-top:2px solid rgb(140, 140, 140);
+    cursor:pointer;
+    font-family: "Nico Moji";
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:2rem;
+}
+.add_button:hover{
+    background:var(--hover-color);
+    color:white;
+}
+
+/*リスト*/
+.list{
+    position:absolute;
+    width:100%;
+    height:calc(100% - 60px);
+    overflow-y:scroll
+}
+.list::-webkit-scrollbar {
+    display: none;
+}
+
+/*youtube検索画面*/
+#youtube_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(50, 50, 50, 0.9);
+    display:none;
+}
+#close_youtube{
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+}
+#close_youtube:hover{
+    background:var(--hover-color);
+    color:white;
+}
+#search_bar{
+    position:absolute;
+    width:100%;
+    top:10px;
+    height:60px;
+}
+#search_input{
+    position:absolute;
+    width:calc(100% - 120px);
+    height:100%;
+    box-sizing:border-box;
+    border:2px solid rgb(140, 140, 140);
+}
+#search_button{
+    position:absolute;
+    width:120px;
+    height:100%;
+    left:calc(100% - 120px);
+    box-sizing:border-box;
+    border:2px solid rgb(140, 140, 140);
+    background:rgba(50, 50, 50, 0.5);
+    color: rgb(204, 204, 204);
+    font-family: "Nico Moji";
+    font-size:2rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    cursor:pointer;
+}
+#search_button:hover{
+    background:var(--hover-color);
+    color:white;
+}
+#youtube_input{
+    position:absolute;
+    width:calc(100% - 5px);
+    height:50px;
+    font-size:1.3rem;
+}
+#search_results{
+    position:absolute;
+    width:100%;
+    height:calc(100% - 80px);
+    top:80px;
+    overflow-y:scroll;
+}
+#search_results::-webkit-scrollbar {
+    display: none;
+}
+#search_default{
+    position:absolute;
+    width:100%;
+    height:calc(100% - 80px);
+    top:80px;
+    color: rgb(204, 204, 204);
+    font-family: "Nico Moji";
+    font-size:2rem;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+}
+.youtube_movie{
+    position:relative;
+    width:100%;
+    height:100px;
+    box-sizing:border-box;
+    border-bottom:1px solid rgb(140, 140, 140);
+    cursor:pointer;
+}
+.youtube_movie:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.youtube_number{
+    position:absolute;
+    color: rgb(204, 204, 204);
+    width:30px;
+    height:100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:0.8rem;
+}
+.youtube_thumb{
+    position:absolute;
+    width:160px;
+    height:90px;
+    top:5px;
+    left:5px;
+    box-sizing:border-box;
+    border-right:1px solid rgb(140, 140, 140);
+}
+.youtube_thumb>img{
+    position:absolute;
+    left:30px;
+}
+.youtube_info{
+    position:absolute;
+    width:calc(100% - 185px);
+    height:90px;
+    left:165px;
+    top:5px;
+    color: rgb(204, 204, 204);
+    font-size:1rem;
+    overflow:hidden;
+}
+.youtube_title_info{
+    position:absolute;
+    width:100%;
+    height:50%;
+    color: rgb(204, 204, 204);
+    font-size:1rem;
+    overflow:hidden;
+    padding-left:10px;
+}
+.youtube_play_info{
+    position:absolute;
+    width:100%;
+    height:50%;
+    top:50%;
+    color: rgb(204, 204, 204);
+    font-size:0.9rem;
+    overflow:hidden;
+    padding-left:10px;
+    box-sizing:border-box;
+    border-top:1px solid rgb(140, 140, 140);
+    padding-top:8px;
+}
+
+/*楽曲モーション入力画面*/
+#music_motion_input_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(50, 50, 50, 0.9);
+    display:none;
+}
+#music_motion_title{
+    position:relative;
+    width:300px;
+    margin-top:10px;
+    height:30px;
+    left:calc(50% - 150px);
+    text-align:center;
+    color: rgb(204, 204, 204);
+    box-sizing:border-box;
+    border-bottom:3px solid rgb(140, 140, 140);
+    font-size:1.5rem;
+    font-family: "Nico Moji";
+}
+#music_motion_desc{
+    margin-top:10px;
+    position:relative;
+    width:calc(100% - 20px);
+    color: rgb(204, 204, 204);
+    text-align:center;
+    padding:10px;
+}
+#music_vmd_input{
+    width:180px;
+    margin-top:10px;
+    height:50px;
+    position:relative;
+    left:calc(50% - 90px);
+    background:#FF5E19;
+    text-align:center;
+    color: rgb(204, 204, 204);
+    padding:5px;
+    font-size:3rem;
+    border-radius:5px;
+    font-family: "Nico Moji";
+    cursor:pointer;
+}
+#music_vmd_input:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.input_button {
+    overflow: hidden;
+    position: absolute;
+    left:25px;
+}
+.input_button input[type="file"] {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    font-size: 100px;
+    cursor: pointer;
+}
+
+
+
+/*楽曲インスタンス*/
+.music{
+    position:relative;
+    width:100%;
+    height:100px;
+    box-sizing:border-box;
+    border-bottom:1px solid rgb(140, 140, 140);
+    overflow:hidden;
+    cursor:pointer;
+}
+.music:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.music_number{
+    position:absolute;
+    color: rgb(204, 204, 204);
+    width:30px;
+    height:100%;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:0.8rem;
+}
+.music_thumb{
+    position:absolute;
+    width:160px;
+    height:90px;
+    top:5px;
+    left:5px;
+    box-sizing:border-box;
+    border-right:1px solid rgb(140, 140, 140);
+}
+.music_thumb>img{
+    position:absolute;
+    left:30px;
+}
+.music_info{
+    position:absolute;
+    width:calc(100% - 195px);
+    height:90px;
+    left:165px;
+    top:5px;
+}
+.title_info{
+    position:absolute;
+    width:calc(100% - 10px);
+    height:50%;
+    color: rgb(204, 204, 204);
+    font-size:1rem;
+    overflow:hidden;
+    padding-left:10px;
+}
+.motion_info{
+    position:absolute;
+    width:calc(100% - 10px);
+    height:50%;
+    top:50%;
+    color: rgb(204, 204, 204);
+    font-size:1rem;
+    overflow:hidden;
+    padding-left:10px;
+}
+
+
+.music_option{
+    position:absolute;
+    height:100px;
+    width:120px;
+    left:calc(100% - 30px);
+    box-sizing:border-box;
+    border-left:1px solid rgb(140, 140, 140);
+    border-bottom:1px solid rgb(140, 140, 140);
+    cursor:pointer;
+}
+.music_option_button{
+    background:rgba(50, 50, 50, 0.5);
+    position:absolute;
+    height:100%;
+    width:30px;
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.5rem;
+}
+.music_option_button:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.delete_music{
+    position:absolute;
+    height:100%;
+    width:90px;
+    left:30px;
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    background:red;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.5rem;
+}
+
+
+/*アクションインスタンス*/
+.control{
+    position:relative;
+    width:100%;
+    height:100px;
+    box-sizing:border-box;
+    border-bottom:1px solid rgb(140, 140, 140);
+    overflow:hidden;
+    cursor:pointer;
+}
+.control:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.control_info{
+    position:absolute;
+    width:calc(100% - 30px);
+    height:90px;
+    left:0px;
+    top:5px;
+}
+.control_name{
+    position:absolute;
+    width:calc(100% - 10px);
+    height:34%;
+    color: rgb(204, 204, 204);
+    font-size:1.2rem;
+    font-weight:bold;
+    overflow:hidden;
+    padding-left:10px;
+}
+.control_action{
+    position:absolute;
+    width:calc(100% - 10px);
+    height:33%;
+    top:34%;
+    color: rgb(204, 204, 204);
+    font-size:0.7rem;
+    overflow:hidden;
+    padding-left:10px;
+}
+.control_motion{
+    position:absolute;
+    width:calc(100% - 10px);
+    height:33%;
+    top:67%;
+    color: rgb(204, 204, 204);
+    font-size:0.7rem;
+    overflow:hidden;
+    padding-left:10px;
+}
+
+
+.control_option{
+    position:absolute;
+    height:100px;
+    width:120px;
+    left:calc(100% - 30px);
+    box-sizing:border-box;
+    border-left:1px solid rgb(140, 140, 140);
+    border-bottom:1px solid rgb(140, 140, 140);
+    cursor:pointer;
+}
+.control_option_button{
+    background:rgba(50, 50, 50, 0.5);
+    position:absolute;
+    height:100%;
+    width:30px;
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.5rem;
+}
+.control_option_button:hover{
+    background:var(--hover-color);
+    color:white;
+}
+.delete_control{
+    position:absolute;
+    height:100%;
+    width:90px;
+    left:30px;
+    color: rgb(204, 204, 204);
+    overflow:hidden;
+    background:red;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-align-items: center; /* 縦方向中央揃え（Safari用） */
+    align-items: center; /* 縦方向中央揃え */
+    -webkit-justify-content: center; /* 横方向中央揃え（Safari用） */
+    justify-content: center; /* 横方向中央揃え */
+    font-size:1.5rem;
+}
+
+/*アクション入力画面*/
+#control_input_panel{
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:rgba(50, 50, 50, 0.9);
+    display:none;
+}
+#control_title{
+    position:absolute;
+    width:300px;
+    margin-top:5px;
+    height:30px;
+    left:calc(50% - 150px);
+    text-align:center;
+    color: rgb(204, 204, 204);
+    box-sizing:border-box;
+    border-bottom:3px solid rgb(140, 140, 140);
+    font-size:1.5rem;
+    font-family: "Nico Moji";
+}
+#control_desc{
+    position:absolute;
+    width:100%;
+    height:calc(100% - 105px);
+    top:45px;
+    overflow-y:scroll;
+    overflow-x:hidden;
+    color: rgb(204, 204, 204);
+}
+#control_desc::-webkit-scrollbar {
+    display: none;
+}
+.control_item{
+    position:relative;
+    height:40px;
+    width:100%;
+}
+.item_name{
+    position:absolute;
+    top:5px;
+    width:100px;
+    height:30px;
+    left:calc(50% - 110px);
+}
+.item_select{
+    position:absolute;
+    top:5px;
+    width:100px;
+    height:30px;
+    left:50%;
+}
+#command_input{
+    position:absolute;
+    top:5px;
+    width:100px;
+    height:20px;
+    left:50%;
+}
+#control_vmd_input {
+    overflow: hidden;
+    position: absolute;
+    top:5px;
+    width:94px;
+    height:23px;
+    left:50%;
+    background: rgba(20, 20, 20, 0.5);
+    color: rgb(204, 204, 204);
+    border:0px;
+    border: rgb(140, 140, 140) solid 1px;
+    border-radius:5px;
+    font-size:0.7rem;
+    padding-top:3px;
+    padding-left:4px;
+}
+#control_vmd_input input[type="file"] {
+    opacity: 0;
+    filter: progid:DXImageTransform.Microsoft.Alpha(opacity=0);
+    position: absolute;
+    right: 0;
+    top: 0;
+    margin: 0;
+    font-size: 100px;
+    cursor: pointer;
+}
+
+
+
+/*YouTube*/
+#youtube_control{
+    position:absolute;
+    left:calc(100% - 160px);
+    top:calc(100% - 130px);
+    width:160px;
+    height:40px;
+    z-index:10;
+    display:none;
+}
+#prev_yt{
+    position:absolute;
+    width:80px;
+    height:40px;
+    color: rgb(204, 204, 204);
+    font-size:1.5rem;
+    text-align:center;
+    background:rgba(50, 50, 50, 0.5);
+    cursor:pointer;
+}
+#prev_yt:hover{
+    background:var(--hover-color);
+    color:white;
+}
+#next_yt{
+    position:absolute;
+    width:80px;
+    height:40px;
+    left:80px;
+    color: rgb(204, 204, 204);
+    font-size:1.5rem;
+    text-align:center;
+    box-sizing:border-box;
+    border-left:1px solid rgb(140, 140, 140);
+    background:rgba(50, 50, 50, 0.5);
+    cursor:pointer;
+}
+#next_yt:hover{
+    background:var(--hover-color);
+    color:white;
+}
+#youtube_frame{
+    position:absolute;
+    width:100%;
+    height:100%;
+}
+#yt_player{
+    position:absolute;
+    left:calc(100% - 160px);
+    top:calc(100% - 90px);
+    width:160px;
+    height:90px;
+    z-index:10;
+}
+
+
+
+
+#mmd{
+    z-index:0;
+}
+
+
+
+
+
+.select{
+    background:#FF5E19;
+    color:white;
+}

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ja">
+    <head>
+        <title>Miku Miku Summoner</title>
+        <meta charset="utf-8">
+        <meta name="description" content="Miku Miku Summoner はインストール不要のAR体験Webアプリケーションです。お手持ちのMMDのモデルファイルやモーションファイルを使って、音楽に合わせたダンスや、音声認識による命令を出すことが可能です。">
+        <meta name="keywords" content="MMD,AR,javascript,Android">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <link rel="icon" type="image/png" href="img/favicon.png">
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <link rel="apple-touch-icon" href="img/icon.png">
+        <meta name="mobile-web-app-capable" content="yes">
+        <link href="https://fonts.googleapis.com/earlyaccess/mplus1p.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/earlyaccess/nicomoji.css" rel="stylesheet" />
+        <link href="https://fonts.googleapis.com/css?family=Orbitron:700" rel="stylesheet">
+        <link href="css/app.css" rel="stylesheet">
+        <script>
+            (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+                (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+                m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+            })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+            ga('create', 'UA-74903580-5', 'auto');
+            ga('send', 'pageview');
+        </script>
+    </head>
+    <body>
+        <div id="youtube_frame">
+            <div id="yt_player"></div>
+        </div>
+        <div id="stats"></div>
+        <div id="menu_button">
+            <div class="button_elm"></div>
+            <div class="button_elm"></div>
+            <div class="button_elm"></div>
+        </div>
+        <div class='arrow_box'></div>
+        <div id="mode_button" mode="command"><div class="center_font">コマンドモード</div></div>
+        <div id="mic"><img id="img_mic" src="img/mic.png"></div>
+        <div id="youtube_control">
+            <div id="prev_yt">|◀</div>
+            <div id="next_yt">▶|</div>
+        </div>
+        <div id="menu_window">
+            <div id="tabs">
+                <div id="in_tabs">
+                    <div class="tab select" id="music_tab"><div class="center_font">ミュージック</div></div>
+                    <div class="tab" id="control_tab"><div class="center_font">コマンド</div></div>
+                    <div class="tab" id="model_tab"><div class="center_font">モデル</div></div>
+                </div>
+                <div id="close_menu">✕</div>
+            </div>
+            <div id="panels">
+                <div class="panel" id="music_panel">
+                    <div class="list" id="music_list"></div>
+                    <div class="add_button" id="add_music"><div class="center_font">ミュージックのついか</div></div>
+                    <div id="youtube_panel">
+                        <div class="list">
+                            <div id="search_bar">
+                                <div id="search_input">
+                                    <form id="youtube_form">
+                                        <input type="text" id="youtube_input" placeholder="検索キーワード・タグ" autocomplete="off">
+                                    </form>
+                                </div>
+                                <div id="search_button"><div class="center_font">けんさく</div></div>
+                            </div>
+                            <div id="search_default"><div class="center_font" id="youtube_message">けんさくけっか</div></div>
+                            <div id="search_results"></div>
+                        </div>
+                        <div class="add_button" id="close_youtube"><div class="center_font">とじる</div></div>
+                    </div>
+                    <div id="music_motion_input_panel">
+                        <div class="list">
+                            <div id="music_motion_title">モーションファイルのせんたく</div>
+                            <div id="music_motion_desc">お手持ちのMMD専用の.vmdファイルを選択してください。（このサイトではオンラインへのモーションファイルのアップロードは一切行いません。）</div>
+                            <div id="music_vmd_input" class="input_button">せんたく<input id="music_vmd_load" type="file"></div>
+                        </div>
+                        <div class="add_button" id="close_music_motion_input"><div class="center_font">もどる</div></div>
+                    </div>
+                </div>
+                <div class="panel" id="control_panel">
+                    <div class="list" id="control_list"></div>
+                    <div class="add_button" id="add_control"><div class="center_font">コマンドのついか</div></div>
+                    <div id="control_input_panel">
+                        <div id="control_title">コマンドのついか</div>
+                        <div id="control_desc">
+                            <div class="control_item">
+                                <div class="item_name">コマンド名：</div>
+                                <input type="text" id="command_input" placeholder="コマンド名" autocomplete="off">
+                            </div>
+                            <div class="control_item">
+                                <div class="item_name">方向：</div>
+                                <select class="item_select" id="input_direction">
+                                    <option value="front">前方向</option>
+                                    <option value="left">左方向</option>
+                                    <option value="right">右方向</option>
+                                    <option value="back">後ろ方向</option>
+                                </select>
+                            </div>
+                            <div class="control_item">
+                                <div class="item_name">距離：</div>
+                                <select class="item_select" id="input_distance">
+                                    <option value="0">その場</option>
+                                    <option value="1">1m</option>
+                                    <option value="2">2m</option>
+                                    <option value="3">3m</option>
+                                    <option value="4">4m</option>
+                                </select>
+                            </div>
+                            <div class="control_item">
+                                <div class="item_name">時間：</div>
+                                <select class="item_select" id="input_duration">
+                                    <option value="1">1秒</option>
+                                    <option value="2">2秒</option>
+                                    <option value="3">3秒</option>
+                                    <option value="4">4秒</option>
+                                    <option value="5" selected="selected">5秒</option>
+                                    <option value="6">6秒</option>
+                                    <option value="7">7秒</option>
+                                    <option value="8">8秒</option>
+                                    <option value="9">9秒</option>
+                                    <option value="10">10秒</option>
+                                    <option value="15">15秒</option>
+                                    <option value="20">20秒</option>
+                                </select>
+                            </div>
+                            <div class="control_item">
+                                <div class="item_name">モーション：</div>
+                                <div id="control_vmd_input">ファイル選択<input id="control_vmd_load" type="file"></div>
+                            </div>
+                        </div>
+                        <div class="add_button" id="close_control_input"><div class="center_font">もどる</div></div>
+                    </div>
+                </div>
+                <div class="panel" id="model_panel">
+                    <div class="list" id="model_list"></div>
+                    <div class="add_button" id="add_model"><div class="center_font">モデルのついか</div></div>
+                    <div id="model_input_panel">
+                        <div class="list">
+                            <div id="model_title">モデルファイルのせんたく</div>
+                            <div id="model_desc"></div>
+                            <div id="now_load_pmd">よみこみちゅう</div>
+                            <div id="model_pmd_input" class="input_button">せんたく<input id="model_pmd_load" type="file"></div>
+                        </div>
+                        <div class="add_button" id="close_model_input"><div class="center_font">もどる</div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="mmd"></div>
+        <div id="reset_modal_bg">
+            <div id="modal">
+                <div id="modal_title">しょきか</div>
+                <div id="modal_text">モデルやモーションのロードの途中でアプリを終了させたり、予期せぬエラーにより正しくアプリが起動しない場合があります。ご迷惑をおかげしますが、本アプリの初期化をすることで、ご使用を継続頂けます。<text style="color:red;">なお、初期化すると今までロードしたモデルやモーションファイル等の設定も初期化されますのでご注意ください。</text></div>
+                <div id="reset_button">初期化</div>
+            </div>
+            <div id="reset_back">✕</div>
+        </div>
+        <div id="load_bg">
+            <div id="load_gif">
+                <img src="img/loading.gif" id="gif_anim">
+            </div>
+            <div id="load_console"></div>
+            <div id="reset">i</div>
+        </div>
+        <script type="text/javascript" src="https://www.youtube.com/iframe_api"></script>
+        <!-- jQuery -->
+        <script type="text/javascript" src="js/jquery-3.2.0.min.js"></script>
+        <!-- Zip -->
+        <script type="text/javascript" src="js/encoding.js"></script>
+        <script type="text/javascript" src="js/zip.js"></script>
+        <script type="text/javascript" src="js/zip-ext.js"></script>
+        <!-- Three -->
+        <script type="text/javascript" src="js/three.min.js"></script>
+        <script type="text/javascript" src="js/libs/mmdparser.js"></script>
+        <script type="text/javascript" src="js/libs/ammo.js"></script>
+        <script type="text/javascript" src="js/loaders/TGALoader.js"></script>
+        <script type="text/javascript" src="js/loaders/MMDLoader.js"></script>
+        <script type="text/javascript" src="js/effects/OutlineEffect.js"></script>
+        <script type="text/javascript" src="js/animation/CCDIKSolver.js"></script>
+        <script type="text/javascript" src="js/animation/MMDPhysics.js"></script>
+        <script type="text/javascript" src="js/Detector.js"></script>
+        <script type="text/javascript" src="js/libs/stats.min.js"></script>
+        <!-- AR -->
+        <script type="text/javascript" src="js/ar.js"></script>
+        <script type="text/javascript" src="js/threex-artoolkitsource.js"></script>
+        <!-- APP -->
+        <script type="text/javascript" src="js/app.js"></script>
+    </body>
+</html>
+
+
+
+
+
